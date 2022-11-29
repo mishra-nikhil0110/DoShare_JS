@@ -1,5 +1,10 @@
 # DoShare_JS
-Its a file sharing project built on HTML , CSS ,JAVASCRIPT .
+Its a file sharing application built on HTML , CSS ,JAVASCRIPT, Node.js , mongoDb , Express.js.
+Anyone can upload the file on this web app  through two methods --> 1.From drag & drop 2. simply navigating by browse button.
+After uploading the file it provides the link to download the file stored on hosted server. 
+Pasting the link in browser takes user to the download page where the file can be simply downloaded.
+
+
 
 
 
