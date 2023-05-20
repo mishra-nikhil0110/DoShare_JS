@@ -18,14 +18,9 @@ const emailForm = document.querySelector("#email-form");
 const toast = document.querySelector(".toast");
 
 const maxAllowedSize = 100 * 1024 * 1024;
-
-
 const host = "https://innshare.herokuapp.com/";
 const uploadUrl = `${host}api/files`;
 const emailURL = `${host}api/files/send`;
-
-
-
 
 dropZone.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -60,21 +55,16 @@ copyButton.addEventListener("click", () => {
     document.execCommand("copy");
     showToast("Link Copied to Clipboard!")
 });
-
-
 const uploadFile = () => {
-
-
-
     if (fileInput.files.length > 1) {
-        fileInput.value = "";
+        fileInput.value = ` `;
         showToast("Only upload 1 file at a time!!");
         return;
     }
     const file = fileInput.files[0];
     if (file.size > maxAllowedSize) {
         showToast("Can't upload more than 100 GB!!");
-        fileInput.value = "";
+        fileInput.value = ` `;
         return;
 
     }
@@ -97,7 +87,7 @@ const uploadFile = () => {
     xhr.upload.onprogress = updateProgress;
 
     xhr.upload.onerror = () => {
-        fileInput.value = " ";
+        fileInput.value = ` `;
         showToast(`Error in Upload: ${xhr.statusText}`)
     }
     xhr.open("POST", uploadUrl);
@@ -105,12 +95,10 @@ const uploadFile = () => {
 };
 const updateProgress = (e) => {
     const percent = Math.round((e.loaded / e.total) * 100);
-    // console.log(percent);
     bgProgress.style.width = `${percent}%`
     percentDiv.innerText = percent;
     progressBar.style.transform = `scaleX(${percent / 100})`
 };
-
 const showLink = ({ file: url }) => {
     console.log(url);
     // fileInput.value = "";
